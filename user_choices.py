@@ -27,4 +27,10 @@ class UserChoices:
 
     def summary_all_expenses(self):
         return sum(expense["amount"] for expense in self.expenses.values())
+    
+    def view_all_expenses(self):
+        return [(details['description'], details['amount']) for details in self.expenses.values()]
+
+         #list(self.expenses.items())
+         #[(description, expense) for description, expense in self.expenses.items()]
 

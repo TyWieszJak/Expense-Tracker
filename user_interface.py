@@ -27,10 +27,11 @@ class UserInterface(UserChoices):
                             description = input("Enter the description: \n").strip()
                             if not description:
                                 raise ValueError("Description cannot be empty.")
+                            view_adding_amount = self.add_expense(description, add_amount)
                             #self.add_expense(description, add_amount)
                         except ValueError as e:
                             print(f"Invalid input: {e}")
-                        view_adding_amount = self.add_expense(description, add_amount)
+                        
                         print(view_adding_amount)
                     case 2:
                         try:
@@ -45,8 +46,17 @@ class UserInterface(UserChoices):
                     case 3:
                         pass
                     case 4:
-                        pass
-                        #self.view_all_expenses()
+                        view_all_expenses = self.view_all_expenses()
+
+                        if not view_all_expenses:
+                            print("Seznam výdajů je prázdný.")
+                        else:
+                            print("Seznam výdajů:")
+                            print("-" * 30)
+                            for description, expense in view_all_expenses:
+                                print(f"{description:20} {expense:10.2f}")
+                            print("-" * 30)
+
                     case 5:
                         expense = self.summary_all_expenses()
                         print(f"Amount of the expense is : {expense} dollars.\n")
