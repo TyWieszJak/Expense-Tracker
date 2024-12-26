@@ -15,7 +15,7 @@ class UserChoices:
             'date' : date
         }
         self.expenses[self.counter] = expense
-        self.counter += 1  # Při každém přidání výdaje se inkrementuje counter
+        self.counter += 1  #
         return (f"Added: #{expense['id']} - {add_amount} dollars for {description} on {date}.\n")
 
     def delete_expense(self, expense_id):
@@ -29,7 +29,15 @@ class UserChoices:
         return sum(expense["amount"] for expense in self.expenses.values())
     
     def view_all_expenses(self):
-        return [(details['description'], details['amount']) for details in self.expenses.values()]
+        return [(expense['id'], expense['description'], expense['amount'], expense['date']) for expense in self.expenses.values()]
+    
+    def update_expense(self, expense,expense_id, description, amount):
+        expense['description'] = description
+        expense['amount'] = amount
+        expense['date'] = expense['date']
+        return f"Updated expense: {expense['description']} (ID: {expense_id}).\n"    
+
+
 
          #list(self.expenses.items())
          #[(description, expense) for description, expense in self.expenses.items()]
