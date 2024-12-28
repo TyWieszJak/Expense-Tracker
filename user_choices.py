@@ -36,7 +36,8 @@ class UserChoices:
         expense['amount'] = amount
         expense['date'] = expense['date']
         return f"Updated expense: {expense['description']} (ID: {expense_id}).\n"    
-
+    def summary_specific_month(self, month):
+        return sum(expense['amount'] for expense in self.expenses.values() if int(expense['date'].split('-')[1]) == month)
 
 
          #list(self.expenses.items())

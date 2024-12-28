@@ -55,7 +55,9 @@ class UserInterface(UserChoices):
                             expense = self.summary_all_expenses()
                             print(f"Amount of the expense is : {expense} dollars.\n")
                         case 6:
-                            pass
+                            month = int(input("Enter the month (1-12): "))
+                            expense = self.summary_specific_month(month)
+                            print(f"Amount of the expense in {month} month is : {expense} dollars.\n")
                         case 7:
                             exit()
                         case _:
